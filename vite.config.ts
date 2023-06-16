@@ -18,6 +18,11 @@ export default defineConfig({
         target: 'http://lelebk.com/api',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
+      },
+      '/api/table': {
+        target: 'https://api-admin-wesports-remycn-dev.hrtps.com/home/test',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
   }

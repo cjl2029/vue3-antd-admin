@@ -27,6 +27,11 @@ export const constantRouterMap: RouteRecordRaw[] = [
     path: '/500',
     name: '500',
     component: () => import('/src/errorPages/500.vue')
+  },
+  {
+    path: '/face-table',
+    name: 'faceTable',
+    component: () => import('/src/views/faceTable/faceTable.vue')
   }
 ]
 
