@@ -15,7 +15,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://lelebk.com/api',
+        target: 'http://quan.local.com/api',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       },

@@ -13,7 +13,7 @@ export type UserState = {
   token: string,
   name: string,
   avatar: string,
-  roles: string[],
+  roles?: string[],
   routers?: RouterTable
 }
 
@@ -71,6 +71,7 @@ const user = {
     login (context: ActionContext<UserState, AllState>, params: LoginFrom) {
       return new Promise((resolve, reject) => {
         login(params).then(e => {
+          console.log(e)
           const data = e.data
           storage.set('token', data.token)
           context.commit('setToken', data.token)
@@ -102,6 +103,7 @@ const user = {
       return new Promise((resolve) => {
         menu().then(e => {
           const routeTable = e.data.data
+          console.log(routeTable)
           context.commit('setRouters', routeTable)
           // 初始化侧边菜单
           context.rootState.menu.menuRouter = routeTable[0]['children'] || []

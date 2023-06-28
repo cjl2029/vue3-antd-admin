@@ -37,9 +37,9 @@ request.interceptors.request.use((config: AxiosRequestConfig): AxiosRequestConfi
  * @param { Object } response 返回的数据
  */
 request.interceptors.response.use((response: AxiosResponse): AxiosResponse | Promise<AxiosResponse> => {
-  if (response.data.code === 200) {
+  if (response.status === 200) {
     return response
-  } else if (response.data.code === -401) {
+  } else if (response.status === 401) {
     // 登录失效
     storage.remove('token')
     router.push({ path: '/login', query: { redirect: router.currentRoute.value.fullPath } })

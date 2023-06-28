@@ -7,8 +7,8 @@
           <div class="login-container-hello">您好!</div>
           <div class="login-container-title">欢迎来到通用管理后台</div>
           <a-form ref="formRef" :model="form" :rules="rules" @keyup.enter="handleSubmit">
-            <a-form-item name="username">
-              <a-input v-model:value="form.username" autocomplete="off" placeholder="请输入账号">
+            <a-form-item name="email">
+              <a-input v-model:value="form.email" autocomplete="off" placeholder="请输入邮箱">
                 <template v-slot:prefix>
                   <UserOutlined style="color: rgba(0, 0, 0, 0.25)" />
                 </template>
@@ -53,10 +53,10 @@ export default defineComponent({
     const form = data_form()
 
     const rules = reactive({
-      username: [
+      email: [
         {
           required: true,
-          message: '请输入账号',
+          message: '请输入邮箱',
           trigger: 'change'
         }
       ],
@@ -98,7 +98,7 @@ export default defineComponent({
 
 function data_form () {
   const form: UnwrapRef<LoginFrom> = reactive({
-    username: undefined,
+    emial: undefined,
     password: undefined
   })
   return form

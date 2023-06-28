@@ -1,4 +1,4 @@
 export type LoginFrom = {
-  username: string | undefined,
+  email: string | undefined,
   password: string | undefined
 }
