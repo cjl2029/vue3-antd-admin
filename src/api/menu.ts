@@ -7,7 +7,7 @@ type ConfigType<T=ResponseData> = Promise<AxiosResponse<T>>
 
 export const getData = (params: any): ConfigType<TableList> => {
   return request({
-    url: '/table',
+    url: '/menus/list',
     method: 'get',
     params
   })
@@ -15,7 +15,7 @@ export const getData = (params: any): ConfigType<TableList> => {
 
 export const addData = (data: any): ConfigType => {
   return request({
-    url: '/table/add',
+    url: '/menus/create',
     method: 'post',
     data
   })
@@ -23,7 +23,7 @@ export const addData = (data: any): ConfigType => {
 
 export const editGetData = (params: any): ConfigType<EditData> => {
   return request({
-    url: '/table/editGetData',
+    url: '/menus/show',
     method: 'get',
     params
   })
@@ -31,7 +31,7 @@ export const editGetData = (params: any): ConfigType<EditData> => {
 
 export const editData = (data: any): ConfigType => {
   return request({
-    url: '/table/edit',
+    url: '/menus/update',
     method: 'post',
     data
   })
@@ -39,15 +39,7 @@ export const editData = (data: any): ConfigType => {
 
 export const delData = (data: any): ConfigType => {
   return request({
-    url: '/table/del',
-    method: 'post',
-    data
-  })
-}
-
-export const upload = (data: any): ConfigType<UploadApi> => {
-  return request({
-    url: '/table/upload',
+    url: '/menus/delete',
     method: 'post',
     data
   })
@@ -55,7 +47,7 @@ export const upload = (data: any): ConfigType<UploadApi> => {
 
 export const options = (): ConfigType<OptionsData> => {
   return request({
-    url: '/table/options',
+    url: '/menus/options',
     method: 'get'
   })
 }
