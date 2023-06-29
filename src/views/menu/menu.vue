@@ -2,6 +2,7 @@
   <tableLayout 
     :columns="columns"
     :formItem="formItem"
+    :rules="rules"
     :options="options"
     :get="getData"
     :add="addData"
@@ -58,11 +59,11 @@ export default defineComponent({
     // 规则
     const rules = {
       name: [{required: true, message: '请输入姓名', trigger: 'change',type:'string'}],
-      icon: [{required: true, message: '请输入图标', trigger: 'change',type:'string'}],
+      icon: [{required: false, message: '请输入图标', trigger: 'change',type:'string'}],
       key: [{required: true, message: '请输入key', trigger: 'change',type:'string'}],
       path: [{required: true, message: '请输入路径', trigger: 'change',type:'string'}],
-      redirect: [{required: true, message: '请输入跳转', trigger: 'change',type:'string'}],
-      pid: [{required: true, message: '请选择父级', trigger: 'change',type:'string'}],
+      component: [{required: true, message: '请选输入组件', trigger: 'change'}],
+      pid: [{required: true,message: '请选择层级'}]
 
     }
 
