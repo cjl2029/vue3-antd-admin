@@ -3,6 +3,12 @@
       :columns="columns"
        :get="getData"
        :select-item="selectItem"
+       :add = "addData"
+       :edit = "editData"
+       :del = "delData"
+       :editdata = "editGetData"
+       :formItem="formItem"
+       :rules="rules"
       ref="layout" 
     >
     </tableLayout> 
@@ -12,7 +18,7 @@
   <script lang="ts">
   import { useRouter } from 'vue-router'
   import { defineComponent, ref } from 'vue'
-  import { getData} from '@/api/user'
+  import { getData,addData,editData,editGetData,delData} from '@/api/course'
   import tableLayout from '@/components/tableLayout/tableLayout.vue'
   export default defineComponent({
     name: 'el_table',
@@ -26,13 +32,24 @@
         { title: '序号', dataIndex: 'id' }, { title: '名称', dataIndex: 'name' }
       ]
 
-      //searchFrom
-      const selectItem = ref([
-      { title: '姓名', key: 'name-like', type: 'input', itemWidth: '290px' },
-    ])
+
+   // 表单
+   const formItem = [
+      { title: '名称', key: 'name', type: 'input' },
+    ]
+
+    // 筛选
+    const selectItem = ref([
+        { title: '姓名', key: 'name-like', type: 'input', itemWidth: '290px' },
+       ])
+
+    // 规则
+    const rules = {
+      name: [{required: true, message: '请输入姓名', trigger: 'change'}],
+    }
       
   
-      return { columns, getData, selectItem}
+      return { columns, getData,addData,editData,editGetData,delData, selectItem,formItem,rules}
       
     }
   })
