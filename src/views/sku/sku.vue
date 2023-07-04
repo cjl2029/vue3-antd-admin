@@ -5,8 +5,8 @@
        :select-item="selectItem"
        :add = "addData"
        :edit = "editData"
+       :editData = "editGetData"
        :del = "delData"
-       :editdata = "editGetData"
        :formItem="formItem"
        :rules="rules"
       ref="layout" 
@@ -21,7 +21,7 @@
   import { getData,addData,editData,editGetData,delData} from '@/api/sku'
   import tableLayout from '@/components/tableLayout/tableLayout.vue'
   export default defineComponent({
-    name: 'el_table',
+    name: 'el_sku',
     components: {
       tableLayout
     },
@@ -32,6 +32,10 @@
         { title: '序号', dataIndex: 'id' }, 
         { title: '名称', dataIndex: 'name' },
         { title: 'icon', dataIndex: 'icon' },
+        { title: '价格', dataIndex: 'price' },
+        { title: '市场价', dataIndex: 'market_price' },
+        { title: '描述', dataIndex: 'desc' },
+        { title: '详情', dataIndex: 'detail' },
       ]
 
 
@@ -39,6 +43,10 @@
    const formItem = [
       { title: '名称', key: 'name', type: 'input' },
       { title: 'icon', key: 'icon', type: 'input' },
+      { title: '价格', key: 'price', type: 'number' },
+      { title: '市场价格', key: 'market_price', type: 'number' },
+      { title: '描述', key: 'desc', type: 'input' },
+      { title: '详情', key: 'detail', type: 'input' },
     ]
 
     // 筛选
@@ -49,6 +57,11 @@
     // 规则
     const rules = {
       name: [{required: true, message: '请输入姓名', trigger: 'change'}],
+      icon: [{required: true, message: '请输入icon', trigger: 'change'}],
+      price: [{required: true, message: '请输入价格', trigger: 'change',type:"number"}],
+      market_price: [{required: true, message: '请输入市场价', trigger: 'change',type:"number"}],
+      desc: [{required: true, message: '请输入描述', trigger: 'change'}],
+      detail: [{required: true, message: '请输入详情', trigger: 'change'}],
     }
       
   
