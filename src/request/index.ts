@@ -27,7 +27,11 @@ const errorHandler = (error: AxiosError): AxiosError | Promise<AxiosError> => {
  * @param { Object } config 配置参数
  */
 request.interceptors.request.use((config: AxiosRequestConfig): AxiosRequestConfig => {
-  config.headers['Authorization'] = 'Bearer ' + storage.get('token') || ''
+  if(config.url !== '/login')
+  {
+    config.headers['Authorization'] = 'Bearer ' + storage.get('token') || ''
+  }
+  console.log(config)
   return config
 }, errorHandler)
 

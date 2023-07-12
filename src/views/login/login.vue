@@ -5,7 +5,7 @@
       <a-col :xs="24" :sm="24" :md="12" :lg="10" :xl="6">
         <div class="login-container-form">
           <div class="login-container-hello">您好!</div>
-          <div class="login-container-title">欢迎来到通用管理后台</div>
+          <div class="login-container-title">欢迎来到管理后台</div>
           <a-form ref="formRef" :model="form" :rules="rules" @keyup.enter="handleSubmit">
             <a-form-item name="email">
               <a-input v-model:value="form.email" autocomplete="off" placeholder="请输入邮箱">
@@ -30,7 +30,7 @@
         </div>
       </a-col>
     </a-row>
-    <div class="login-container-tips">基于vue3+ant-design-vue+vite+ts开发的开源通用后台框架</div>
+    <div class="login-container-tips"></div>
   </div>
 </template>
 
@@ -53,10 +53,10 @@ export default defineComponent({
     const form = data_form()
 
     const rules = reactive({
-      email: [
+      name: [
         {
           required: true,
-          message: '请输入邮箱',
+          message: '请输入账户',
           trigger: 'change'
         }
       ],
@@ -98,7 +98,7 @@ export default defineComponent({
 
 function data_form () {
   const form: UnwrapRef<LoginFrom> = reactive({
-    emial: undefined,
+    name: undefined,
     password: undefined
   })
   return form

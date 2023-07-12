@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "build": "vite build",
+    "serve": "vite preview",
+    "deploy": "scp -r ./dist/* ubuntu@62.234.48.202:/var/www/quanAdmin"
   },
   "dependencies": {
     "ant-design-vue": "^2.2.6",

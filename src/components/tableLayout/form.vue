@@ -41,6 +41,7 @@
           :allowClear="true" 
           valueFormat="YYYY-MM-DD"
           style="width: 100%;"
+          :showTime="item.showTime ? true : false"
           :disabled="item.disabled ? true : false"
           v-if="item.type === 'datePicker'"
         />
