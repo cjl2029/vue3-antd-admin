@@ -9,6 +9,7 @@
     :editdata="editGetData"
     :formItem="formItem"
     :rules="rules"
+    :options="options"
     ref="layout"
   >
   </tableLayout>
@@ -17,7 +18,7 @@
   <script lang="ts">
 import { useRouter } from "vue-router";
 import { defineComponent, ref } from "vue";
-import { getData, addData, editData, editGetData, delData } from "@/api/course";
+import { getData, addData, editData, editGetData, delData, options } from "@/api/course";
 import tableLayout from "@/components/tableLayout/tableLayout.vue";
 export default defineComponent({
   name: "el_table",
@@ -29,7 +30,7 @@ export default defineComponent({
     const columns = [
       { title: "序号", dataIndex: "id" },
       { title: "名称", dataIndex: "title" },
-      { title: "sku", dataIndex: "sku.name" },
+      { title: "sku", dataIndex: "sku_name" },
       { title: "人数", dataIndex: "size" },
       { title: "预定", dataIndex: "booked" },
       { title: "开始时间", dataIndex: "begin_at" },
@@ -39,10 +40,10 @@ export default defineComponent({
     // 表单
     const formItem = [
       { title: "名称", key: "title", type: "input" },
-      { title: 'SKU', key: 'cat', type: 'select', options: [], optionKey: 'sku' },
+      { title: 'SKU', key: 'sku_id', type: 'select', options: [], optionKey: 'sku' },
       { title: "人数", key: "size", type: "number" },
-      { title: "开始时间", key: "begin_at", type: "datePicker", showTime: "true" },
-      { title: "结束时间", key: "end_at", type: "datePicker", showTime: "true" },
+      { title: "开始时间", key: "begin_at", type: "dateTimePicker"},
+      { title: "结束时间", key: "end_at", type: "dateTimePicker"},
   ];
 
     // 筛选
@@ -65,6 +66,7 @@ export default defineComponent({
       selectItem,
       formItem,
       rules,
+      options,
     };
   },
 });

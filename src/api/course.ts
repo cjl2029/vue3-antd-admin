@@ -29,7 +29,7 @@ export const editGetData = (params: any): ConfigType<EditData> => {
   })
 }
 
-export const editData = (data: any): ConfigType => {
+export const editData = (data: OptionsData): ConfigType => {
   return request({
     url: '/courses/update',
     method: 'post',
@@ -42,5 +42,12 @@ export const delData = (data: any): ConfigType => {
     url: '/courses/delete',
     method: 'post',
     data
+  })
+}
+
+export const options = (): ConfigType<OptionsData> => {
+  return request({
+    url: '/courses/options',
+    method: 'get',
   })
 }
