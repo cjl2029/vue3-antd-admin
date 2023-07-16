@@ -53,7 +53,7 @@ export default defineComponent({
     const form = data_form()
 
     const rules = reactive({
-      name: [
+      email: [
         {
           required: true,
           message: '请输入账户',
@@ -98,7 +98,7 @@ export default defineComponent({
 
 function data_form () {
   const form: UnwrapRef<LoginFrom> = reactive({
-    name: undefined,
+    email: undefined,
     password: undefined
   })
   return form

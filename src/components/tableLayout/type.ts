@@ -52,7 +52,8 @@ export type OptionsData = () => Promise<AxiosResponse<{
 
 // 文件上传组件
 export interface UploadData extends ResponseData  {
-  url: string
+  url: string,
+  key?: string
 }
 
 export type UploadFun = (x?: any) => Promise<AxiosResponse<UploadData>>   
