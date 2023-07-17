@@ -12,3 +12,18 @@ export const getData = (params: any): ConfigType<TableList> => {
     params
   })
 }
+export const editGetData = (params: any): ConfigType<EditData> => {
+  return request({
+    url: '/users/show',
+    method: 'get',
+    params
+  })
+}
+
+export const editData = (data: any): ConfigType => {
+  return request({
+    url: '/users/update',
+    method: 'post',
+    data
+  })
+}

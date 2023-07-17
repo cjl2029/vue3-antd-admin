@@ -127,14 +127,14 @@
         <!-- 图片上传 -->
         <upload
           v-model:value="formData[item.key]"
-          :upload="item.upload"
+          :upload="item.upload ? item.upload : uploadImageApi"
           :disabled="item.disabled ? true : false"
           v-if="item.type === 'upload'"
         />
         <!-- 文件上传 -->
         <uploadFile
           v-model:value="formData[item.key]"
-          :upload="item.upload"
+          :upload="item.upload ? item.upload : uploadFileApi"
           :disabled="item.disabled ? true : false"
           v-if="item.type === 'uploadFile'"
         />
@@ -153,6 +153,7 @@
 import utils from "./utils";
 import upload from "./upload.vue";
 import uploadFile from "./uploadFile.vue";
+import {uploadImageApi,uploadFileApi} from "../../api/upload"
 import { message } from "ant-design-vue";
 import { FormItem, SetData } from "./type";
 import { defineComponent, PropType, ref, watch, reactive, computed } from "vue";
@@ -255,7 +256,7 @@ export default defineComponent({
       formRef.value.resetFields();
     };
 
-    return { formData, formRef, onSubmit, reset };
+    return { formData, formRef, onSubmit, reset, uploadImageApi,uploadFileApi};
   },
 });
 </script>

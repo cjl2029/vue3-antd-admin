@@ -44,11 +44,3 @@ export const delData = (data: any): ConfigType => {
     data
   })
 }
-
-export const upload = (data: any): ConfigType<UploadApi> => {
-  return request({
-    url: '/upload',
-    method: 'post',
-    data
-  })
-}

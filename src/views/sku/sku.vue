@@ -27,7 +27,6 @@ import {
   editData,
   editGetData,
   delData,
-  upload,
 } from "@/api/sku";
 import tableLayout from "@/components/tableLayout/tableLayout.vue";
 export default defineComponent({
@@ -50,7 +49,7 @@ export default defineComponent({
     // 表单
     const formItem = [
       { title: "名称", key: "name", type: "input" },
-      { title: "icon", key: "icon", type: "upload", upload: upload },
+      { title: "icon", key: "icon", type: "upload" },
       { title: "价格", key: "price", type: "number" },
       { title: "市场价格", key: "market_price", type: "number" },
       { title: "描述", key: "desc", type: "input" },

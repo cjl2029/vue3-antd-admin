@@ -62,6 +62,7 @@ export default defineComponent({
         loading.value = true
         const formdata = new FormData()
         formdata.append('file', data.file)
+        formdata.append('path', 'file')
         props.upload(formdata).then(e => {
           loading.value = false
           context.emit('update:value', e.data.url)
