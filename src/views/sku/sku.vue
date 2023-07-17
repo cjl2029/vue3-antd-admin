@@ -11,6 +11,9 @@
     :rules="rules"
     ref="layout"
   >
+  <template v-slot:icon="item">
+    <a-avatar :src=item.value.text.icon shape="square" :size="64"></a-avatar>
+  	</template>
   </tableLayout>
 </template>
 
