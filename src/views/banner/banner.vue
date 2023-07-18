@@ -11,8 +11,8 @@
     :rules="rules"
     ref="layout"
   >
-  <template v-slot:icon="item">
-    <a-avatar :src=item.value.text.icon shape="square" :size="64"></a-avatar>
+  <template v-slot:url="item">
+    <a-avatar :src=item.value.text.url shape="square" :size="64"></a-avatar>
   	</template>
   </tableLayout>
 </template>
@@ -27,7 +27,7 @@ import {
   editData,
   editGetData,
   delData,
-} from "@/api/sku";
+} from "@/api/banner";
 import tableLayout from "@/components/tableLayout/tableLayout.vue";
 export default defineComponent({
   name: "el_sku",
@@ -39,23 +39,14 @@ export default defineComponent({
     const columns = [
       { title: "序号", dataIndex: "id" },
       { title: "名称", dataIndex: "name" },
-      { title: "icon", slots: { customRender: 'icon' } },
-      { title: "价格", dataIndex: "price" },
-      { title: "市场价", dataIndex: "market_price" },
-      // { title: "描述", dataIndex: "desc" },
-      // { title: "详情", dataIndex: "detail" },
-      { title: "地址", dataIndex: "address" },
+      { title: "url", slots: { customRender: 'url' } },
     ];
 
     // 表单
     const formItem = [
       { title: "名称", key: "name", type: "input" },
-      { title: "icon", key: "icon", type: "upload" },
-      { title: "价格", key: "price", type: "number" },
-      { title: "市场价格", key: "market_price", type: "number" },
-      { title: "描述", key: "desc", type: "textarea" },
-      { title: "详情", key: "detail", type: "input" },
-      { title: "地址", key: "address", type: "input" },
+      { title: "图片", key: "url", type: "upload" },
+  
     ];
 
     // 筛选
@@ -66,25 +57,8 @@ export default defineComponent({
     // 规则
     const rules = {
       name: [{ required: true, message: "请输入姓名", trigger: "change" }],
-      icon: [{ required: true, message: "请输入icon", trigger: "change" }],
-      price: [
-        {
-          required: true,
-          message: "请输入价格",
-          trigger: "change",
-          type: "number",
-        },
-      ],
-      market_price: [
-        {
-          required: true,
-          message: "请输入市场价",
-          trigger: "change",
-          type: "number",
-        },
-      ],
-      desc: [{ required: true, message: "请输入描述", trigger: "change" }],
-      detail: [{ required: true, message: "请输入详情", trigger: "change" }],
+      icon: [{ required: true, message: "请上传图片", trigger: "change" }],
+
     };
 
     return {
