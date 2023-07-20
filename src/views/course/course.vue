@@ -12,6 +12,9 @@
     :options="options"
     ref="layout"
   >
+  <template v-slot:booked="item">
+    <a :href="'/course/course-order?courseId='+item.value.text.id">{{ item.value.text.booked }}</a>
+  </template>
   </tableLayout>
 </template>
       
@@ -35,6 +38,7 @@ export default defineComponent({
       { title: "预定", dataIndex: "booked" },
       { title: "开始时间", dataIndex: "begin_at" },
       { title: "结束时间", dataIndex: "end_at" },
+      { title: "预定人员", slots: {customRender:'booked'} },
     ];
 
     // 表单
