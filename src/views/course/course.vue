@@ -13,7 +13,7 @@
     ref="layout"
   >
   <template v-slot:booked="item">
-    <a :href="'/course/course-order?courseId='+item.value.text.id">{{ item.value.text.booked }}</a>
+    <a :href="'/course/course-order?course_id='+item.value.text.id">{{ item.value.text.booked }}</a>
   </template>
   </tableLayout>
 </template>
