@@ -20,6 +20,15 @@ export const editGetData = (params: any): ConfigType<EditData> => {
   })
 }
 
+export const addData = (data: any): ConfigType => {
+  return request({
+    url: '/users/create',
+    method: 'post',
+    data
+  })
+}
+
+
 export const editData = (data: any): ConfigType => {
   return request({
     url: '/users/update',
