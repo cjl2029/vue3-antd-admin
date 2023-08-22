@@ -42,7 +42,7 @@
         { title: '密码', key: 'password', type: 'input' },
         {
           title: '类型', key: 'type', type: 'select', options: [
-            { value: 0, label: '管理员' },
+            { value: 2, label: '管理员' },
             { value: 1, label: '小程序' },
           ]
         },
