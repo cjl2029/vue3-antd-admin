@@ -26,15 +26,28 @@
         </div>
         <template #overlay>
           <a-menu>
+
+            <a-menu-item key="2" @click="showUpdatePassword()">
+              <template #icon><a-icon type="EditOutlined" /></template>
+              修改密码
+            </a-menu-item>
+
             <a-menu-item key="1" @click="logout()">
               <template #icon><a-icon type="PoweroffOutlined" /></template>
               退出登录
             </a-menu-item>
+
           </a-menu>
         </template>
       </a-dropdown>
     </div>
   </div>
+  <a-modal :visible="show" title="Basic Modal" @ok="updatePassword" @cancel="hideUpdatePassword">
+      <p>Some contents...</p>
+      <p>Some contents...</p>
+      <p>Some contents...</p>
+    </a-modal>
+
 </template>
 <script lang="ts">
 import router from '@/router'
@@ -66,6 +79,12 @@ export default defineComponent({
     collapsed: {
       required: true,
       type: Boolean
+    }
+  },
+  data(){
+    return {
+      show: false,
+      form:{}
     }
   },
   setup() {
@@ -104,6 +123,26 @@ export default defineComponent({
 
     return { logout, tabClick, activeKey }
 
+  },
+  methods: {
+    
+    showUpdatePassword(){
+      console.log(this.show)
+     this.show = true
+    },
+
+    hideUpdatePassword(){
+     this.show = false
+    },
+
+
+    // 修改密码
+    updatePassword(){
+      const store = useStore()
+      store.dispatch('user/update-password',this.form).then(e => {
+        this.show = false
+      })
+    }
   }
 })
 </script>
