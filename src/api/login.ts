@@ -1,6 +1,6 @@
 import request from '../request'
 import { AxiosResponse } from 'axios'
-import { LoginFrom } from '@/types/views/login'
+import { LoginFrom, updatePasswordForm } from '@/types/views/login'
 import { ResponseData } from '@/types/api/public'
 import { LoginSuccess, UserInfo, RouterData } from '@/types/api/login'
 
@@ -46,5 +46,16 @@ export const menu = (): ConfigType<RouterData> => {
   return request({
     url: '/logout',
     method: 'post'
+  })
+}
+
+/**
+ * @desc: 更新密码
+ */
+export const updatePassword = (data: updatePasswordForm): ConfigType<ResponseData> => {
+  return request({
+    url: '/auth/update-password',
+    method: 'post',
+    data
   })
 }

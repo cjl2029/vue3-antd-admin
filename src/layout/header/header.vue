@@ -42,10 +42,31 @@
       </a-dropdown>
     </div>
   </div>
-  <a-modal :visible="show" title="Basic Modal" @ok="updatePassword" @cancel="hideUpdatePassword">
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
+  <a-modal :visible="show" title="Basic Modal" @ok="onHandle" @cancel="hideUpdatePassword">
+    <a-form
+    :model="formState"
+    name="修改密码"
+    :label-col="{ span: 8 }"
+    :wrapper-col="{ span: 16 }"
+    autocomplete="off"
+
+  >
+    <a-form-item
+      label="原始密码"
+      name="current_password"
+      :rules="[{ required: true, message: '请输入原始密码!' }]"
+    >
+      <a-input-password v-model:value="formState.current_password" />
+    </a-form-item>
+
+    <a-form-item
+      label="新密码"
+      name="new_password"
+      :rules="[{ required: true, message: '请输入新密码!' }]"
+    >
+      <a-input-password v-model:value="formState.new_password" />
+    </a-form-item>
+  </a-form>
     </a-modal>
 
 </template>
@@ -56,6 +77,8 @@ import aIcon from '@/components/aicon/aicon.vue'
 import { defineComponent, watch, computed, onBeforeMount } from "vue"
 import { RouterObj, RouterTable } from '@/types/api/login'
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue'
+import {updatePassword} from '@/api/login'
+import { message } from 'ant-design-vue'
 export default defineComponent({
   name: 'layoutHeader',
   components: {
@@ -84,7 +107,10 @@ export default defineComponent({
   data(){
     return {
       show: false,
-      form:{}
+      formState:{
+        current_password:'',
+        new_password:'',
+      }
     }
   },
   setup() {
@@ -137,10 +163,10 @@ export default defineComponent({
 
 
     // 修改密码
-    updatePassword(){
-      const store = useStore()
-      store.dispatch('user/update-password',this.form).then(e => {
-        this.show = false
+    onHandle(){
+      updatePassword(this.formState).then(res => {
+        message.success(res.data.message)
+        this.hideUpdatePassword()
       })
     }
   }

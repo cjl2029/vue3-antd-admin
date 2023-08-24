@@ -49,6 +49,7 @@ request.interceptors.response.use((response: AxiosResponse): AxiosResponse | Pro
     router.push({ path: '/login', query: { redirect: router.currentRoute.value.fullPath } })
     return Promise.reject(response)
   } else {
+    message.error(response.data.message)
     return Promise.reject(response)
   }
 }, errorHandler)
