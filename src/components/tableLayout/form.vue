@@ -138,6 +138,12 @@
           :disabled="item.disabled ? true : false"
           v-if="item.type === 'uploadFile'"
         />
+        <!-- 文件上传 -->
+        <richText
+          v-model:value="formData[item.key]"
+          :disabled="item.disabled ? true : false"
+          v-if="item.type === 'richText'"
+        />
         <!-- 自定义插槽 -->
         <slot
           :name="item.slotName"
@@ -152,6 +158,7 @@
 <script lang="ts">
 import utils from "./utils";
 import upload from "./upload.vue";
+import richText from "./richText.vue";
 import uploadFile from "./uploadFile.vue";
 import {uploadImageApi,uploadFileApi} from "../../api/upload"
 import { message } from "ant-design-vue";
@@ -163,6 +170,7 @@ export default defineComponent({
   components: {
     upload,
     uploadFile,
+    richText
   },
   props: {
     // 表单项
