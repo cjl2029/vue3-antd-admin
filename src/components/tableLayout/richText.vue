@@ -2,7 +2,6 @@
   <div>
     <div class="mx-4" v-loading="loading">
       <Editor v-model="content" :api-key="apiKey" :init="init" />
-      <div class="mt-4 text-center"><el-button @click="save">保存</el-button></div>
     </div>
   </div>
 </template>
@@ -37,11 +36,14 @@ export default defineComponent({
     watch(props, (data) => {
       content.value = data.value
     })
+    watch(content,(data) => {
+      console.log(data)
+    })
 
 
-    let loading = ref(true)
+
     const afterInit = () => {
-      loading.value = false
+
     }
 
     const init = {
@@ -59,11 +61,8 @@ export default defineComponent({
     }
     
 
-    const save = ()=>{
-      console.log(props.value)
-    }
 
-    return {init,apiKey,loading,content,save}
+    return {init,apiKey,content}
 
 
   },
