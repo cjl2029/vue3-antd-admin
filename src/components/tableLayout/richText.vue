@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="mx-4" v-loading="loading">
+    <div class="mx-4">
       <Editor v-model="content" :api-key="apiKey" :init="init" />
     </div>
   </div>
@@ -9,6 +9,7 @@
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue'
 import Editor from '@tinymce/tinymce-vue'
+import { uploadImageProcess } from '@/api/upload'
 
 export default defineComponent({
   name: 'richText',
@@ -25,10 +26,20 @@ export default defineComponent({
   setup(props,context) {
 
     let content = ref()
-    const apiKey = 'xxx'
-    const example_image_upload_handler = () => {
-
-    }
+    const apiKey = '8bypuio1h8o9otvl9herk86a069ny4dq6u18o1iitlruo034'
+    const image_upload_handler = (blobInfo:any, progress:any) => new Promise((resolve,reject) => {
+        const onUploadProgress = (e:any) => {
+            progress(e.loaded / e.total * 100)
+         }
+         const formData = new FormData();
+        formData.append('file', blobInfo.blob(), blobInfo.filename());
+        uploadImageProcess(formData,onUploadProgress).then(res => {
+          resolve(res.data.url)
+        }).catch(e => {
+          reject('Image upload failed')
+          console.log(e)
+        })
+    })
     if (props.value) {
       content.value = props.value
     }
@@ -37,7 +48,7 @@ export default defineComponent({
       content.value = data.value
     })
     watch(content,(data) => {
-      console.log(data)
+      context.emit('update:value', data)
     })
 
 
@@ -57,7 +68,7 @@ export default defineComponent({
       ],
       // images_upload_url: 'https://mock.apifox.cn/m1/2700315-0-default/uploadTiny',
       // images_upload_base_path: '/demo',
-      images_upload_handler: example_image_upload_handler
+      images_upload_handler: image_upload_handler
     }
     
 

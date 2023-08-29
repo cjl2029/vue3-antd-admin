@@ -53,9 +53,9 @@ export default defineComponent({
       { title: "icon", key: "icon", type: "upload" },
       { title: "价格", key: "price", type: "number" },
       { title: "市场价格", key: "market_price", type: "number"},
-      { title: "详情", key: "detail", type: "input" },
+      { title: "描述", key: "desc", type: "input" },
       { title: "地址", key: "address", type: "input" },
-      { title: "描述", key: "desc", type: "richText", itemWidth: 'calc(100% - 20px)', labelCol: 3 },
+      { title: "详情", key: "detail", type: "richText", itemWidth: 'calc(100% - 20px)', labelCol: 3 },
 
     ];
 

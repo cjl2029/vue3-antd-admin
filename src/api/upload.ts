@@ -19,3 +19,13 @@ export const uploadImageApi = (data: any): ConfigType<UploadApi> => {
       data
     })
   }
+
+  export const uploadImageProcess = (data: any,process:any): ConfigType<UploadApi> => {
+
+    return request({
+      url: '/upload',
+      method: 'post',
+      data,
+      onUploadProgress:process,
+    })
+  }
