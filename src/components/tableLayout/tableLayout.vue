@@ -310,18 +310,18 @@ export default defineComponent({
         }
       })
       if (props.page) {
-        params.current = paging.current
-        params.pageSize = paging.pageSize
+        params.page = paging.current
+        params.per_page = paging.pageSize
       }
       if (props.params) {
         Object.assign(params, props.params)
       }
       props.get(params).then(e => {
         dataSource.value = utils.addKeyIsReplace(e.data.data, props.replaceFields)
-        const { current, total, pageSize } = e.data
-        paging.current = current
+        const { current_page, total, per_page } = e.data.meta
+        paging.current = current_page
         paging.total = total
-        paging.pageSize = pageSize
+        paging.pageSize = per_page
         loading.value = false
       }).catch(err => {
         message.error(err.message || err.data.message)

@@ -8,10 +8,8 @@ interface ResponseData<T = any> {
 }
 
 interface TableList extends ResponseData {
-  total: number,
-  current: number,
-  pageSize: number,
-  data: []
+  data: [],
+  meta?: any
 }
 
 // 表单项类型_增改查
